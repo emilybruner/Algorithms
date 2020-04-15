@@ -3,7 +3,27 @@
 import argparse
 
 def find_max_profit(prices):
-  pass
+
+  # this solution works except it does not work for the test case with a negative profit  
+    # max_profit = 0
+    # min_price = prices[0]
+    # for i in range(1, len(prices)):
+    #   profit = prices[i] - min_price
+    #   max_profit = max(profit, max_profit)
+    #   min_price = min(min_price, prices[i])
+
+    #changing profit to be assigned to this allows for the test case with negative numbers 
+    profit = prices[1] - prices[0]
+    price = prices[0]
+    
+    #need to start the loop after the first item 
+    for i in prices[1:]:
+        if (i - price) > profit:
+            profit = i - price
+        if i < price:
+            price = i
+            
+    return profit
 
 
 if __name__ == '__main__':

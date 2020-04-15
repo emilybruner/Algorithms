@@ -3,7 +3,28 @@
 import math
 
 def recipe_batches(recipe, ingredients):
-  pass 
+  
+  total_batches = 0
+
+  for key in recipe.keys():
+    #see if this key has a match in ingredients 
+    if key not in ingredients:
+      return 0
+    
+    batches = ingredients[key]//recipe[key]
+    if batches == 0:
+      return 0
+
+    if not total_batches:
+      total_batches = batches
+
+    else:
+      total_batches = min(batches, total_batches)
+
+  return total_batches
+
+
+  
 
 
 if __name__ == '__main__':
